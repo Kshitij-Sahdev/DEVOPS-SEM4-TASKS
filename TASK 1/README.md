@@ -41,6 +41,7 @@ Get keys from AWS Console > My Security Credentials > Create New Access Key.
 ## 3. Files
 
 ```
+| File              | Purpose                        |
 |-------------------|-------------------------------|
 | provider.tf       | AWS provider config            |
 | main.tf           | EC2 resource config            |
