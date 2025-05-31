@@ -85,11 +85,6 @@ This command applies the changes defined in your Terraform configuration to crea
 ## Expected Output
 After successful execution of the commands, the AWS resources will be provisioned as per the configuration. The console output will reflect the creation and status of these resources, similar to the examples shown in the images below.
 
-![WhatsApp Image 2025-05-29 at 15 58 55_53403717](https://github.com/user-attachments/assets/a31bf13e-7294-4413-b41d-e6598e416a7a)
-
-![WhatsApp Image 2025-05-29 at 16 00 14_fcd30e88](https://github.com/user-attachments/assets/a55bbac2-682a-4503-abdd-bc26f4f11b84)
-
-![WhatsApp Image 2025-05-29 at 16 07 29_e1f0bb50](https://github.com/user-attachments/assets/ee18db1c-0f53-40d0-899c-cc2bd35d6229)
-
-
-
+![alt text](image.png)
+![alt text](image-1.png)
+![alt text](image-2.png)
