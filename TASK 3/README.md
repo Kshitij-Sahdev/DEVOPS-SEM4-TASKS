@@ -1,18 +1,18 @@
 # Terraform Modular Environment AWS Infrastructure
 
-This project demonstrates a modular approach to provisioning AWS infrastructure using Terraform. It is structured to support multiple environments (`dev`, `prod`, and `test`) while promoting reuse, clarity, and scalability.
+Modular Terraform project for AWS infrastructure across `dev`, `prod`, and `test` environments. Focuses on reuse, clarity, and scalability.
 
 ---
 
 # Root Structure
 ```bash
 task 3/
-|--- main.tf          # Core infrastructure definitions using reusable modules (VPC, EC2, RDS, etc.)
-|--- variables.tf     # Declares input variables used across the root configuration.
-|--- backend.tf       # Configures remote state backend (e.g., S3 bucket with DynamoDB for state locking).
-|--- provider.tf      # Specifies provider settings (e.g., AWS region, credentials).
-|--- output.tf        # Defines the output values from the root module (e.g., ALB DNS, instance IPs).
-|--- local.tf         # Declares local values (e.g., tags, common naming conventions, or computed values).
+|--- main.tf          # Core infrastructure using reusable modules (VPC, EC2, RDS).
+|--- variables.tf     # Root input variables.
+|--- backend.tf       # Remote state backend config (e.g., S3, DynamoDB).
+|--- provider.tf      # Provider settings (e.g., AWS region).
+|--- output.tf        # Root module output values (e.g., ALB DNS, instance IPs).
+|--- local.tf         # Local values (e.g., tags, common naming, computed values).
 |----------- modules/ # Reusable Terraform modules
 | |---- ec2/ 
 | |---- eip/ 
@@ -22,27 +22,26 @@ task 3/
 | |---- subnet/ 
 | |---- vpc/ 
 | |---- igw/
-|----------- dev/ # Development environment configuration
+|----------- dev/     # Development environment configuration
 | |---- dev.tfvars 
-|----------- staging/ # Production environment
+|----------- staging/ # Staging environment configuration
 | |---- staging.tfvars
-|----------- test/ # Testing environment
+|----------- test/    # Testing environment configuration
 | |---- test.tfvars
 ```
 # Module Structure
-This is how the structure of every module in the file "module" (ec2, eip, nat, etc.) Looks like: 
+Standard structure for modules (e.g., `ec2`, `vpc`):
 ```bash
 | |-------- ec2 (module name)
-| |-- main.tf      # Defines the actual resources to be created within the module.
-| |-- output.tf    # Declares the input variables required by the module.
-| |-- variables.tf # Defines the output values that the module exports for use by other modules or the root configuration.
+| |-- main.tf      # Defines module resources.
+| |-- output.tf    # Module output values.
+| |-- variables.tf # Module input variables.
 ```
 
 # Env Specific files
 
-The `dev` environment (and also `staging` and `test`) includes the following Terraform configuration file:
-
+Each environment (`dev`, `staging`, `test`) uses a `.tfvars` file:
 
 ### - `{env_name}.tfvars`
-Assigns literal values to variables declared in `variables.tf`. Each environment (`dev`, `prod`, `test`) will have its own values appropriate for its use.
+Assigns values to variables in `variables.tf` for the specific environment.
 
